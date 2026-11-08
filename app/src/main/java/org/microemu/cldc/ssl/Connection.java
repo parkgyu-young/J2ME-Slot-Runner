@@ -30,20 +30,18 @@ import org.microemu.cldc.SecurityInfoImpl;
 import org.microemu.microedition.io.ConnectionImplementation;
 
 import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+import java.net.Socket;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 
 import javax.microedition.io.SecureConnection;
 import javax.microedition.io.SecurityInfo;
-import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+
+import com.example.j2meslots.SlotRuntime;
+import com.example.j2meslots.proxy.LegacyTls;
+import com.example.j2meslots.proxy.ProxySockets;
 
 public class Connection extends org.microemu.cldc.socket.SocketConnection implements SecureConnection, ConnectionImplementation {
 
@@ -64,36 +62,10 @@ public class Connection extends org.microemu.cldc.socket.SocketConnection implem
 		int port = Integer.parseInt(name.substring(portSepIndex + 1));
 		String host = name.substring("ssl://".length(), portSepIndex);
 
-		// TODO validate certificate chains
-		TrustManager[] trustAllCerts = new TrustManager[]{
-				new X509TrustManager() {
-					@Override
-					public X509Certificate[] getAcceptedIssuers() {
-						return null;
-					}
-
-					@Override
-					public void checkClientTrusted(
-							X509Certificate[] certs, String authType) {
-					}
-
-					@Override
-					public void checkServerTrusted(
-							X509Certificate[] certs, String authType) {
-					}
-				}
-		};
-
-		try {
-			SSLContext sc = SSLContext.getInstance("SSL");
-			sc.init(null, trustAllCerts, new SecureRandom());
-			SSLSocketFactory factory = sc.getSocketFactory();
-			socket = factory.createSocket(host, port);
-		} catch (NoSuchAlgorithmException ex) {
-			throw new IOException(ex.toString());
-		} catch (KeyManagementException ex) {
-			throw new IOException(ex.toString());
-		}
+		// J2ME Slot Runner: TLS on top of a direct or proxied (tunnel) socket. Certificates are
+		// validated by default; the per-slot "allow legacy certificates" option relaxes it.
+		Socket plain = ProxySockets.connect(host, port);
+		socket = LegacyTls.wrap(plain, host, port, SlotRuntime.allowLegacyCerts());
 
 		return this;
 	}

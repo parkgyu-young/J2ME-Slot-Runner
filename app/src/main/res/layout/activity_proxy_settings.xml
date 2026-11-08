@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grid_bg"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/proxy_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/grid_toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="@color/grid_toolbar_text" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Mode -->
+            <LinearLayout style="@style/ProxyCard">
+
+                <TextView
+                    style="@style/ProxyHeader"
+                    android:text="@string/proxy_mode" />
+
+                <RadioGroup
+                    android:id="@+id/proxy_mode_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/proxy_mode_off"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/proxy_mode_off"
+                        android:textColor="@color/tile_title" />
+
+                    <RadioButton
+                        android:id="@+id/proxy_mode_global"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/proxy_mode_global"
+                        android:textColor="@color/tile_title" />
+
+                    <RadioButton
+                        android:id="@+id/proxy_mode_per_slot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/proxy_mode_per_slot"
+                        android:textColor="@color/tile_title" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Editor -->
+            <LinearLayout style="@style/ProxyCard">
+
+                <TextView
+                    style="@style/ProxyHeader"
+                    android:text="@string/proxy_target" />
+
+                <Spinner
+                    android:id="@+id/proxy_target"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/proxy_slot_enabled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="44dp"
+                    android:text="@string/proxy_slot_enabled"
+                    android:textColor="@color/tile_title" />
+
+                <TextView
+                    android:id="@+id/proxy_per_slot_note"
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_per_slot_note"
+                    android:textColor="@color/warning_text" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_type" />
+
+                <Spinner
+                    android:id="@+id/proxy_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_types_help" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_host" />
+
+                <EditText
+                    android:id="@+id/proxy_host"
+                    style="@style/ProxyEdit"
+                    android:hint="proxy.example.com"
+                    android:inputType="textUri"
+                    tools:ignore="HardcodedText"
+                    xmlns:tools="http://schemas.android.com/tools" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_port" />
+
+                <EditText
+                    android:id="@+id/proxy_port"
+                    style="@style/ProxyEdit"
+                    android:hint="1080"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    tools:ignore="HardcodedText"
+                    xmlns:tools="http://schemas.android.com/tools" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_user" />
+
+                <EditText
+                    android:id="@+id/proxy_user"
+                    style="@style/ProxyEdit"
+                    android:inputType="text" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_password" />
+
+                <EditText
+                    android:id="@+id/proxy_password"
+                    style="@style/ProxyEdit"
+                    android:inputType="textPassword" />
+
+                <TextView
+                    android:id="@+id/proxy_not_encrypted"
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_not_encrypted"
+                    android:textColor="@color/warning_text"
+                    android:visibility="gone" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_bypass" />
+
+                <EditText
+                    android:id="@+id/proxy_bypass"
+                    style="@style/ProxyEdit"
+                    android:gravity="top"
+                    android:hint="10.0.0.0/8, *.lan, 192.168.1.10"
+                    android:inputType="textMultiLine|textUri"
+                    android:minLines="2"
+                    android:singleLine="false"
+                    tools:ignore="HardcodedText"
+                    xmlns:tools="http://schemas.android.com/tools" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/proxy_import"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/proxy_import" />
+
+                    <Button
+                        android:id="@+id/proxy_export"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/proxy_export" />
+
+                    <Button
+                        android:id="@+id/proxy_save"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/action_save" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_test_url" />
+
+                <EditText
+                    android:id="@+id/proxy_test_url"
+                    style="@style/ProxyEdit"
+                    android:inputType="textUri" />
+
+                <Button
+                    android:id="@+id/proxy_test"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/proxy_test" />
+
+                <TextView
+                    android:id="@+id/proxy_test_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/tile_title"
+                    android:textIsSelectable="true"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Per-slot TLS -->
+            <LinearLayout style="@style/ProxyCard">
+
+                <TextView
+                    style="@style/ProxyHeader"
+                    android:text="@string/proxy_tls_section" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/proxy_legacy_certs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="44dp"
+                    android:text="@string/proxy_legacy_title"
+                    android:textColor="@color/tile_title" />
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:text="@string/proxy_legacy_warning"
+                    android:textColor="@color/warning_text" />
+            </LinearLayout>
+
+            <!-- Limits -->
+            <LinearLayout style="@style/ProxyCard">
+
+                <TextView
+                    style="@style/ProxyLabel"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/proxy_limits" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -37,6 +37,13 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import javax.microedition.io.HttpConnection;
+import javax.net.ssl.HttpsURLConnection;
+
+import com.example.j2meslots.SlotRuntime;
+import com.example.j2meslots.proxy.LegacyTls;
+import com.example.j2meslots.proxy.ProxiedHttpURLConnection;
+import com.example.j2meslots.proxy.ProxyConfig;
+import com.example.j2meslots.proxy.ProxyHolder;
 
 public class Connection implements HttpConnection, ConnectionImplementation {
 
@@ -58,7 +65,7 @@ public class Connection implements HttpConnection, ConnectionImplementation {
 		} catch (MalformedURLException ex) {
 			throw new IOException(ex.toString());
 		}
-		cn = url.openConnection();
+		cn = openUrl(url);
 		// Add encoding info to the header
 		cn.setRequestProperty("Accept-Encoding", "identity");
 		// J2ME do not follow redirects. Test this url
@@ -67,6 +74,27 @@ public class Connection implements HttpConnection, ConnectionImplementation {
 			((HttpURLConnection) cn).setInstanceFollowRedirects(false);
 		}
 		return this;
+	}
+
+	/**
+	 * J2ME Slot Runner: routes the request through the slot's proxy (if any) and enables legacy
+	 * TLS protocols; certificates are only relaxed when the slot opted in.
+	 */
+	protected static URLConnection openUrl(URL url) throws IOException {
+		boolean trustAll = SlotRuntime.allowLegacyCerts();
+		ProxyConfig proxy = ProxyHolder.forHost(url.getHost());
+		if (proxy != null) {
+			return new ProxiedHttpURLConnection(url, proxy, trustAll);
+		}
+		URLConnection c = url.openConnection();
+		if (c instanceof HttpsURLConnection) {
+			HttpsURLConnection https = (HttpsURLConnection) c;
+			https.setSSLSocketFactory(LegacyTls.factory(trustAll));
+			if (trustAll) {
+				https.setHostnameVerifier(LegacyTls.hostnameVerifier(true));
+			}
+		}
+		return c;
 	}
 
 	@Override
@@ -378,7 +406,7 @@ public class Connection implements HttpConnection, ConnectionImplementation {
 		if (cn instanceof HttpURLConnection &&
 				((HttpURLConnection) cn).getRequestMethod().equals(HttpConnection.GET)) {
 			if (cnOut == null) {
-				cnOut = cn.getURL().openConnection();
+				cnOut = openUrl(cn.getURL());
 				cnOut.setDoOutput(true);
 				((HttpURLConnection) cnOut).setRequestMethod(HttpConnection.POST);
 			}

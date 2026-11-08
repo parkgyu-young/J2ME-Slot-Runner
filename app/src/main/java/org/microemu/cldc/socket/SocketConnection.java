@@ -31,6 +31,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import com.example.j2meslots.proxy.ProxySockets;
+
 public class SocketConnection implements javax.microedition.io.SocketConnection {
 
 	protected Socket socket;
@@ -39,7 +41,8 @@ public class SocketConnection implements javax.microedition.io.SocketConnection 
 	}
 
 	public SocketConnection(String host, int port) throws IOException {
-		this.socket = new Socket(host, port);
+		// J2ME Slot Runner: direct, SOCKS5 or HTTP CONNECT depending on the slot's proxy
+		this.socket = ProxySockets.connect(host, port);
 	}
 
 	public SocketConnection(Socket socket) {
