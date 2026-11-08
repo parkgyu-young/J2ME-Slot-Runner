@@ -40,6 +40,8 @@ public class Constants {
 	public static final String PREF_VIBRATION = "pref_vibration_switch";
 	public static final String PREF_SCREENSHOT_SWITCH = "pref_screenshot_switch";
 	public static final String PREF_STORAGE_WARNING_SHOWN = "pref_storage_warning_shown";
+	/** J2ME Slot Runner: user opt-in for local crash reports (default off). */
+	public static final String PREF_CRASH_REPORTS = "pref_crash_reports";
 
 	public static final int RESULT_NEED_RECREATE = 1;
 

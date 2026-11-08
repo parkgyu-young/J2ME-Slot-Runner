@@ -71,6 +71,13 @@
         android:icon="@drawable/ic_setting_backup"
         android:summary="@string/pref_backup_summary"
         android:title="@string/pref_backup" />
+    <!-- J2ME Slot Runner: opt-in, reports stay on the device -->
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:icon="@drawable/ic_setting_message"
+        android:key="pref_crash_reports"
+        android:summary="@string/pref_crash_reports_summary"
+        android:title="@string/pref_crash_reports_title" />
     <PreferenceCategory android:title="@string/pref_category_experimental">
         <SwitchPreferenceCompat
             android:key="micro3d_using_message"

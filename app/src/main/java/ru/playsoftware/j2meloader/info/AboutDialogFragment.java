@@ -33,7 +33,9 @@ public class AboutDialogFragment extends DialogFragment {
 	@NonNull
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		StringBuilder message = new StringBuilder().append(getText(R.string.version))
+		// J2ME Slot Runner: fork notice + credit to upstream J2ME-Loader (Apache-2.0)
+		StringBuilder message = new StringBuilder().append(getString(R.string.about_fork))
+				.append(getText(R.string.version))
 				.append(BuildConfig.VERSION_NAME)
 				.append(getText(R.string.about_discord))
 				.append(getText(R.string.about_github))

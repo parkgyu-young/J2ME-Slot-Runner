@@ -77,9 +77,11 @@ public class EmulatorApplication extends Application {
 						.withEnabled(true)
 						.build()
 				));
-		boolean enabled = isSignatureValid() && !BuildConfig.FLAVOR.equals("dev");
-		ACRA.getErrorReporter().setEnabled(enabled);
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		// J2ME Slot Runner: crash reporting is OFF by default (opt-in in Settings) and reports are
+		// kept on the device only - no report sender is registered (see AppCenterSenderFactory).
+		boolean enabled = sp.getBoolean(Constants.PREF_CRASH_REPORTS, false);
+		ACRA.getErrorReporter().setEnabled(enabled);
 		sp.registerOnSharedPreferenceChangeListener(themeListener);
 		setNightMode(sp.getString(Constants.PREF_THEME, null));
 		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

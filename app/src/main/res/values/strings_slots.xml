@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- J2ME Slot Runner strings. Default language: Vietnamese (English in values-en). -->
+<resources>
+    <string name="library_title">Thư viện game</string>
+    <string name="slot_default_name">Ô #%1$d</string>
+    <string name="slot_task_label" translatable="false">#%1$d · %2$s</string>
+    <string name="slot_status_empty">○ Chưa có game</string>
+    <string name="slot_status_ready">○ Sẵn sàng</string>
+    <string name="slot_status_running">● Đang chạy</string>
+    <string name="slot_not_started">Chưa khởi động</string>
+    <string name="slot_number" translatable="false">#%1$d</string>
+    <string name="slot_proxy_badge">🌐 Proxy</string>
+    <string name="slot_cd_start">Chạy</string>
+    <string name="slot_cd_stop">Dừng</string>
+    <string name="slot_cd_menu">Menu của ô</string>
+    <string name="slot_add">＋ Thêm ô</string>
+    <string name="slot_max">Tối đa %1$d ô</string>
+
+    <string name="menu_install_game">Cài game mới</string>
+    <string name="menu_choose_game">Chọn game cho ô này</string>
+    <string name="menu_clear_game">Bỏ game khỏi ô</string>
+    <string name="menu_rename_slot">Đổi tên ô</string>
+    <string name="menu_delete_slot">Xóa ô này</string>
+    <string name="rename_title">Tên ô #%1$d</string>
+    <string name="action_save">Lưu</string>
+    <string name="action_cancel">Hủy</string>
+    <string name="action_close">Đóng</string>
+    <string name="action_continue">Tiếp tục</string>
+    <string name="choose_title">Game cho ô #%1$d</string>
+    <string name="choose_empty">Chưa có game – cài file jar vào trước</string>
+    <string name="btn_install_game">Cài game</string>
+    <string name="slot_assigned">Đã gán \"%1$s\" cho ô #%2$d</string>
+    <string name="slot_running_change">Ô #%1$d đang chạy. Dừng ô trước khi đổi game?</string>
+    <string name="slot_stop_and_continue">Dừng và tiếp tục</string>
+    <string name="slot_delete_confirm">Xóa ô #%1$d? Dữ liệu lưu của game vẫn được giữ.</string>
+    <string name="slot_delete_running">Ô #%1$d đang chạy. Dừng và xóa ô?</string>
+    <string name="slot_stopping">Đang dừng ô #%1$d…</string>
+    <string name="slot_err_no_game">Ô chưa có game – hãy chọn hoặc cài game</string>
+    <string name="slot_err_game_missing">Game của ô đã bị xóa hoặc hỏng – hãy chọn hoặc cài lại</string>
+    <string name="slot_err_config">Không tạo được file cấu hình cho game</string>
+    <string name="slot_err_start">Không chạy được ô: %1$s</string>
+    <string name="warn_many_title">Nhiều ô đang chạy</string>
+    <string name="warn_many_message">Đang có %1$d ô chạy cùng lúc. Chạy thêm sẽ tốn nhiều RAM và hệ thống có thể tự đóng game. Tiếp tục?</string>
+
+    <string name="menu_library">Thư viện / cài game</string>
+    <string name="menu_settings">Cài đặt</string>
+    <string name="menu_proxy">Proxy</string>
+    <string name="menu_emulator_settings">Cài đặt emulator</string>
+    <string name="menu_about">Giới thiệu</string>
+    <string name="settings_title">Cài đặt</string>
+    <string name="settings_dark">Giao diện tối</string>
+    <string name="settings_keep_alive">Chạy ngầm trên thiết bị (không đóng game khi tắt màn hình / chuyển app)</string>
+    <string name="keep_alive_applies">Chạy ngầm áp dụng cho các ô khởi động từ bây giờ</string>
+    <string name="battery_title">Tối ưu pin</string>
+    <string name="battery_message">Hãy tắt tối ưu pin cho app trong Cài đặt để game không bị dừng khi tắt màn hình. Nếu không có thông báo đang chạy, hãy cho phép thông báo của app.</string>
+    <string name="battery_open">Mở Cài đặt</string>
+    <string name="storage_permission_needed">Cần quyền bộ nhớ để lưu game và dữ liệu</string>
+
+    <string name="slot_channel_name">Ô chạy ngầm</string>
+    <string name="slot_notification_title">Ô #%1$d đang chạy ngầm</string>
+    <string name="slot_notification_text">Game J2ME</string>
+    <string name="slot_action_stop">Dừng</string>
+    <string name="fgs_special_use_subtype" translatable="false">Keeps a J2ME game emulator slot that the user started running while the screen is off or the app is in background (user-enabled option).</string>
+
+    <string name="pref_crash_reports_title">Báo cáo lỗi (chỉ lưu trên máy)</string>
+    <string name="pref_crash_reports_summary">Tắt mặc định. Khi bật, app hiện hộp thoại khi gặp lỗi và lưu báo cáo trên thiết bị; không gửi dữ liệu ra ngoài. Có hiệu lực sau khi mở lại app.</string>
+    <string name="about_fork">&lt;b>J2ME Slot Runner&lt;/b> – chạy tối đa 20 game J2ME song song, chạy ngầm và proxy.&lt;BR>Dựa trên &lt;b>J2ME-Loader&lt;/b> (Apache License 2.0) của Nikita Shakarun, Yury Kharchenko và cộng sự: &lt;a href="https://github.com/nikita36078/J2ME-Loader">github.com/nikita36078/J2ME-Loader&lt;/a>&lt;BR>Không phải bản chính thức của J2ME-Loader.&lt;BR>&lt;BR></string>
+
+    <string name="proxy_title">Proxy</string>
+    <string name="proxy_mode">Chế độ</string>
+    <string name="proxy_mode_off">Tắt</string>
+    <string name="proxy_mode_global">Dùng chung toàn app</string>
+    <string name="proxy_mode_per_slot">Theo từng ô</string>
+    <string name="proxy_target">Cấu hình cho</string>
+    <string name="proxy_target_global">Chung (toàn app)</string>
+    <string name="proxy_slot_enabled">Bật proxy cho ô này</string>
+    <string name="proxy_per_slot_note">Cấu hình theo ô chỉ có hiệu lực ở chế độ \"Theo từng ô\".</string>
+    <string name="proxy_type">Loại</string>
+    <string name="proxy_host">Host</string>
+    <string name="proxy_port">Port</string>
+    <string name="proxy_user">User</string>
+    <string name="proxy_password">Mật khẩu</string>
+    <string name="proxy_bypass">Bỏ qua proxy (host, *.domain, IP, CIDR – cách nhau bởi dấu phẩy hoặc xuống dòng)</string>
+    <string name="proxy_test">Test kết nối</string>
+    <string name="proxy_test_url">URL kiểm tra</string>
+    <string name="proxy_testing">Đang kiểm tra…</string>
+    <string name="proxy_test_ok">✓ Thành công: %1$d ms (HTTP %2$d)</string>
+    <string name="proxy_test_fail">✗ Lỗi: %1$s</string>
+    <string name="proxy_import">Nhập URI</string>
+    <string name="proxy_export">Xuất URI</string>
+    <string name="proxy_import_hint" translatable="false">socks5://user:pass@host:1080</string>
+    <string name="proxy_import_invalid">URI không hợp lệ (%1$s). Dạng đúng: scheme://user:pass@host:port với scheme http, https-connect hoặc socks5</string>
+    <string name="proxy_export_with_password">Kèm mật khẩu</string>
+    <string name="proxy_copy">Sao chép</string>
+    <string name="proxy_copied">Đã sao chép</string>
+    <string name="proxy_saved">Đã lưu. Áp dụng cho các ô khởi động (lại) từ bây giờ.</string>
+    <string name="proxy_invalid_host">Host không hợp lệ</string>
+    <string name="proxy_invalid_port">Port phải từ 1 đến 65535</string>
+    <string name="proxy_limits">Giới hạn: kết nối UDP/datagram và Bluetooth KHÔNG đi qua proxy. Với SOCKS5, tên miền được phân giải phía proxy. App chỉ dùng proxy do bạn nhập, không chèn proxy ẩn và không thu thập lưu lượng.</string>
+    <string name="proxy_types_help">HTTP: proxy HTTP thường (http gửi thẳng, https/socket dùng CONNECT). HTTPS-CONNECT: mọi kết nối đi qua tunnel CONNECT. SOCKS5: hỗ trợ user/mật khẩu.</string>
+    <string name="proxy_not_encrypted">Thiết bị không hỗ trợ lưu trữ mã hoá – mật khẩu sẽ KHÔNG được lưu.</string>
+    <string name="proxy_tls_section">TLS theo ô</string>
+    <string name="proxy_legacy_title">Cho phép chứng chỉ cũ cho ô đang chọn</string>
+    <string name="proxy_legacy_warning">⚠ Rủi ro: chấp nhận chứng chỉ hết hạn, tự ký, không tin cậy và bỏ kiểm tra tên máy chủ cho kết nối https/ssl của game trong ô này. Kẻ tấn công trên mạng có thể đọc hoặc sửa dữ liệu. Chỉ bật cho máy chủ game cũ mà bạn tin tưởng.</string>
+    <string name="proxy_legacy_enable">Vẫn bật</string>
+    <string name="proxy_select_slot_first">Chọn một ô ở mục \"Cấu hình cho\"</string>
+
+    <string name="proxy_err_dns">Không tìm thấy máy chủ proxy \"%1$s\" (lỗi DNS)</string>
+    <string name="proxy_err_refused">Không kết nối được tới proxy %1$s:%2$d (%3$s)</string>
+    <string name="proxy_err_timeout">Hết thời gian chờ proxy %1$s:%2$d</string>
+    <string name="proxy_err_closed">Proxy %1$s:%2$d đóng kết nối bất ngờ</string>
+    <string name="proxy_err_not_socks5">%1$s:%2$d không phải proxy SOCKS5</string>
+    <string name="proxy_err_not_http">%1$s:%2$d không phải proxy HTTP</string>
+    <string name="proxy_err_auth_required">Proxy %1$s:%2$d yêu cầu đăng nhập – hãy nhập user và mật khẩu</string>
+    <string name="proxy_err_auth_failed">Proxy %1$s:%2$d từ chối đăng nhập: sai user hoặc mật khẩu</string>
+    <string name="proxy_err_auth_unsupported">Proxy %1$s:%2$d không hỗ trợ kiểu xác thực user/mật khẩu</string>
+    <string name="proxy_err_socks_reply">Proxy không kết nối được tới %1$s:%2$d (%3$s)</string>
+    <string name="proxy_err_connect_failed">Proxy từ chối mở tunnel tới %1$s:%2$d (%3$s)</string>
+    <string name="proxy_err_tls">Lỗi TLS: %1$s</string>
+    <string name="proxy_err_bad_response">Phản hồi không hợp lệ từ proxy %1$s:%2$d</string>
+</resources>

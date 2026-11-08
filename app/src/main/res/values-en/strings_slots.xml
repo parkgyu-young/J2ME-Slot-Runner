@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_title">Game library</string>
+    <string name="slot_default_name">Slot #%1$d</string>
+    <string name="slot_status_empty">○ No game</string>
+    <string name="slot_status_ready">○ Ready</string>
+    <string name="slot_status_running">● Running</string>
+    <string name="slot_not_started">Not started</string>
+    <string name="slot_proxy_badge">🌐 Proxy</string>
+    <string name="slot_cd_start">Run</string>
+    <string name="slot_cd_stop">Stop</string>
+    <string name="slot_cd_menu">Slot menu</string>
+    <string name="slot_add">＋ Add slot</string>
+    <string name="slot_max">Maximum %1$d slots</string>
+
+    <string name="menu_install_game">Install new game</string>
+    <string name="menu_choose_game">Choose game for this slot</string>
+    <string name="menu_clear_game">Remove game from slot</string>
+    <string name="menu_rename_slot">Rename slot</string>
+    <string name="menu_delete_slot">Delete this slot</string>
+    <string name="rename_title">Slot #%1$d name</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_close">Close</string>
+    <string name="action_continue">Continue</string>
+    <string name="choose_title">Game for slot #%1$d</string>
+    <string name="choose_empty">No games yet – install a jar file first</string>
+    <string name="btn_install_game">Install game</string>
+    <string name="slot_assigned">\"%1$s\" assigned to slot #%2$d</string>
+    <string name="slot_running_change">Slot #%1$d is running. Stop it before changing the game?</string>
+    <string name="slot_stop_and_continue">Stop and continue</string>
+    <string name="slot_delete_confirm">Delete slot #%1$d? The game\'s save data is kept.</string>
+    <string name="slot_delete_running">Slot #%1$d is running. Stop and delete it?</string>
+    <string name="slot_stopping">Stopping slot #%1$d…</string>
+    <string name="slot_err_no_game">This slot has no game – choose or install one</string>
+    <string name="slot_err_game_missing">The slot\'s game was deleted or is broken – choose or reinstall it</string>
+    <string name="slot_err_config">Could not create the game configuration file</string>
+    <string name="slot_err_start">Cannot start slot: %1$s</string>
+    <string name="warn_many_title">Many slots running</string>
+    <string name="warn_many_message">%1$d slots are already running. Starting another one uses a lot of RAM and Android may close games. Continue?</string>
+
+    <string name="menu_library">Library / install games</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_proxy">Proxy</string>
+    <string name="menu_emulator_settings">Emulator settings</string>
+    <string name="menu_about">About</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_dark">Dark theme</string>
+    <string name="settings_keep_alive">Run in background (keep games running when the screen is off / switching apps)</string>
+    <string name="keep_alive_applies">Background mode applies to slots started from now on</string>
+    <string name="battery_title">Battery optimization</string>
+    <string name="battery_message">Please turn off battery optimization for this app in Settings so games are not stopped when the screen is off. If no "running" notification appears, allow notifications for the app.</string>
+    <string name="battery_open">Open Settings</string>
+    <string name="storage_permission_needed">Storage permission is required to store games and data</string>
+
+    <string name="slot_channel_name">Background slots</string>
+    <string name="slot_notification_title">Slot #%1$d is running in background</string>
+    <string name="slot_notification_text">J2ME game</string>
+    <string name="slot_action_stop">Stop</string>
+
+    <string name="pref_crash_reports_title">Crash reports (stored on device only)</string>
+    <string name="pref_crash_reports_summary">Off by default. When on, a dialog is shown after a crash and the report is stored on the device; nothing is sent anywhere. Takes effect after restarting the app.</string>
+    <string name="about_fork">&lt;b>J2ME Slot Runner&lt;/b> – run up to 20 J2ME games in parallel, in background, with proxy support.&lt;BR>Based on &lt;b>J2ME-Loader&lt;/b> (Apache License 2.0) by Nikita Shakarun, Yury Kharchenko and contributors: &lt;a href="https://github.com/nikita36078/J2ME-Loader">github.com/nikita36078/J2ME-Loader&lt;/a>&lt;BR>Not an official J2ME-Loader build.&lt;BR>&lt;BR></string>
+
+    <string name="proxy_title">Proxy</string>
+    <string name="proxy_mode">Mode</string>
+    <string name="proxy_mode_off">Off</string>
+    <string name="proxy_mode_global">Same for the whole app</string>
+    <string name="proxy_mode_per_slot">Per slot</string>
+    <string name="proxy_target">Configure</string>
+    <string name="proxy_target_global">Global (whole app)</string>
+    <string name="proxy_slot_enabled">Use a proxy for this slot</string>
+    <string name="proxy_per_slot_note">Per-slot settings only apply in \"Per slot\" mode.</string>
+    <string name="proxy_type">Type</string>
+    <string name="proxy_host">Host</string>
+    <string name="proxy_port">Port</string>
+    <string name="proxy_user">User</string>
+    <string name="proxy_password">Password</string>
+    <string name="proxy_bypass">Bypass list (host, *.domain, IP, CIDR – separated by commas or new lines)</string>
+    <string name="proxy_test">Test connection</string>
+    <string name="proxy_test_url">Test URL</string>
+    <string name="proxy_testing">Testing…</string>
+    <string name="proxy_test_ok">✓ OK: %1$d ms (HTTP %2$d)</string>
+    <string name="proxy_test_fail">✗ Error: %1$s</string>
+    <string name="proxy_import">Import URI</string>
+    <string name="proxy_export">Export URI</string>
+    <string name="proxy_import_invalid">Invalid URI (%1$s). Expected scheme://user:pass@host:port with scheme http, https-connect or socks5</string>
+    <string name="proxy_export_with_password">Include password</string>
+    <string name="proxy_copy">Copy</string>
+    <string name="proxy_copied">Copied</string>
+    <string name="proxy_saved">Saved. Applies to slots (re)started from now on.</string>
+    <string name="proxy_invalid_host">Invalid host</string>
+    <string name="proxy_invalid_port">Port must be 1–65535</string>
+    <string name="proxy_limits">Limits: UDP/datagram and Bluetooth connections do NOT go through the proxy. With SOCKS5 host names are resolved by the proxy. The app only uses the proxy you enter, never injects hidden proxies and does not collect traffic.</string>
+    <string name="proxy_types_help">HTTP: regular HTTP proxy (http forwarded, https/sockets via CONNECT). HTTPS-CONNECT: every connection through a CONNECT tunnel. SOCKS5: supports user/password.</string>
+    <string name="proxy_not_encrypted">This device has no working encrypted storage – the password will NOT be saved.</string>
+    <string name="proxy_tls_section">Per-slot TLS</string>
+    <string name="proxy_legacy_title">Allow legacy certificates for the selected slot</string>
+    <string name="proxy_legacy_warning">⚠ Risk: accepts expired, self-signed and untrusted certificates and skips host name checks for the https/ssl connections of games in this slot. An attacker on the network could read or modify the data. Only enable it for old game servers you trust.</string>
+    <string name="proxy_legacy_enable">Enable anyway</string>
+    <string name="proxy_select_slot_first">Select a slot under \"Configure\"</string>
+
+    <string name="proxy_err_dns">Proxy server \"%1$s\" not found (DNS error)</string>
+    <string name="proxy_err_refused">Cannot connect to proxy %1$s:%2$d (%3$s)</string>
+    <string name="proxy_err_timeout">Proxy %1$s:%2$d timed out</string>
+    <string name="proxy_err_closed">Proxy %1$s:%2$d closed the connection unexpectedly</string>
+    <string name="proxy_err_not_socks5">%1$s:%2$d is not a SOCKS5 proxy</string>
+    <string name="proxy_err_not_http">%1$s:%2$d is not an HTTP proxy</string>
+    <string name="proxy_err_auth_required">Proxy %1$s:%2$d requires a login – enter user and password</string>
+    <string name="proxy_err_auth_failed">Proxy %1$s:%2$d rejected the login: wrong user or password</string>
+    <string name="proxy_err_auth_unsupported">Proxy %1$s:%2$d does not support user/password authentication</string>
+    <string name="proxy_err_socks_reply">The proxy could not reach %1$s:%2$d (%3$s)</string>
+    <string name="proxy_err_connect_failed">The proxy refused the tunnel to %1$s:%2$d (%3$s)</string>
+    <string name="proxy_err_tls">TLS error: %1$s</string>
+    <string name="proxy_err_bad_response">Invalid response from proxy %1$s:%2$d</string>
+</resources>

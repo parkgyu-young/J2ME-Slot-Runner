@@ -36,6 +36,7 @@ public class AppCenterSenderFactory implements ReportSenderFactory {
 
 	@Override
 	public boolean enabled(@NonNull CoreConfiguration config) {
-		return true;
+		// J2ME Slot Runner: never send crash data to upstream's (retired) App Center endpoint
+		return false;
 	}
 }

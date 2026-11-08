@@ -1,9 +1,9 @@
 pluginManagement {
     repositories {
-        mavenLocal()
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
+        mavenLocal()
     }
 }
 
@@ -14,11 +14,11 @@ plugins {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        mavenLocal()
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        mavenLocal()
     }
 }
-rootProject.name = "J2ME Loader"
+rootProject.name = "J2ME-Slot-Runner"
 include ':app', ':dexlib'
