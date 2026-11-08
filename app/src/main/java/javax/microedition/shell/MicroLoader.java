@@ -61,6 +61,8 @@ import javax.microedition.m3g.Graphics3D;
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.util.ContextHolder;
 
+import com.example.j2meslots.SlotRuntime;
+
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -179,7 +181,8 @@ public class MicroLoader {
 		if (BuildConfig.FULL_EMULATOR) {
 			File dexSource = new File(appDir, Config.MIDLET_DEX_FILE);
 			File codeCacheDir = ContextCompat.getCodeCacheDir(context);
-			File dexOptDir = new File(codeCacheDir, Config.DEX_OPT_CACHE_DIR);
+			// J2ME Slot Runner: per-slot dex cache, slots must not wipe each other's files
+			File dexOptDir = new File(codeCacheDir, Config.DEX_OPT_CACHE_DIR + SlotRuntime.dataSuffix());
 			if (dexOptDir.exists()) {
 				FileUtils.clearDirectory(dexOptDir);
 			} else if (!dexOptDir.mkdir()) {
@@ -216,7 +219,8 @@ public class MicroLoader {
 				+ (country.length() == 2 ? "-" + country : ""));
 		// FIXME: 21.10.2020 Config.getDataDir() may be in different storage
 		final String primaryStoragePath = Environment.getExternalStorageDirectory().getPath();
-		String dataUri = "file:///c:" + Config.getDataDir().substring(primaryStoragePath.length()) + appDirName;
+		String dataUri = "file:///c:" + Config.getDataDir().substring(primaryStoragePath.length()) + appDirName
+				+ SlotRuntime.dataSuffix();
 		String musicUri = "file:///c:" + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
 				.getPath().substring(primaryStoragePath.length());
 		System.setProperty("fileconn.dir.cache", dataUri + "/cache");

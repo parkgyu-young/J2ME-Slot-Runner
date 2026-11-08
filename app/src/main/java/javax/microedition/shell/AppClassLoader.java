@@ -28,6 +28,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.example.j2meslots.SlotRuntime;
+
 import dalvik.system.DexClassLoader;
 import ru.playsoftware.j2meloader.BuildConfig;
 import ru.playsoftware.j2meloader.config.Config;
@@ -55,7 +57,9 @@ public class AppClassLoader extends DexClassLoader {
 	}
 
 	public static void setDataDir(File appDir) {
-		dataDir = appDir.getParentFile().getParent() + Config.MIDLET_DATA_DIR + appDir.getName();
+		// J2ME Slot Runner: every slot keeps its own RMS/save data ("<app>_slotN")
+		dataDir = appDir.getParentFile().getParent() + Config.MIDLET_DATA_DIR + appDir.getName()
+				+ SlotRuntime.dataSuffix();
 	}
 
 	public static InputStream getResourceAsStream(Class<?> resClass, String resName) {

@@ -342,6 +342,8 @@ public class AppInstaller {
 				}
 				File appDir = new File(Config.getAppDir(), path);
 				FileUtils.deleteDirectory(appDir);
+				// J2ME Slot Runner: keep per-slot saves and slot assignments
+				com.example.j2meslots.Slots.onAppPathChanged(context, path, appDirName);
 			}
 		}
 		currentApp = app;

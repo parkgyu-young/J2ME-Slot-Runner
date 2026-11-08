@@ -3,21 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="auto">
 
-    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Network (J2ME Generic Connection Framework, proxy) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Background slots -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- J2ME APIs; dangerous ones are requested at runtime only when a game needs them -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="s" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <uses-sdk tools:overrideLibrary="com.google.oboe,com.arthenica.ffmpegkit,androidx.*" />
@@ -36,24 +51,39 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:enableOnBackInvokedCallback="false"
-        android:preserveLegacyExternalStorage="true"
-        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
+        android:extractNativeLibs="true"
         tools:targetApi="33"
         tools:ignore="RtlEnabled">
+        <!-- J2ME Slot Runner launcher: grid of up to 20 parallel slots -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.j2meslots.ui.GridActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
             android:exported="true"
-            android:launchMode="singleTask">
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Grid">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.j2meslots.ui.ProxySettingsActivity"
+            android:exported="false"
+            android:label="@string/proxy_title"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- Upstream app library (install / manage JAR & JAD) -->
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
+            android:exported="true"
+            android:label="@string/library_title"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -159,6 +189,370 @@
         <receiver
             android:name="com.nokia.mid.ui.NotificationBroadcastReceiver"
             android:process=":midlet" />
+
+        <!-- BEGIN GENERATED-SLOTS (tools/gen_slots.py) - do not edit by hand -->
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity1"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot1"
+            android:taskAffinity="${applicationId}.slot1"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService1"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot1">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity2"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot2"
+            android:taskAffinity="${applicationId}.slot2"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService2"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot2">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity3"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot3"
+            android:taskAffinity="${applicationId}.slot3"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService3"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot3">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity4"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot4"
+            android:taskAffinity="${applicationId}.slot4"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService4"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot4">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity5"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot5"
+            android:taskAffinity="${applicationId}.slot5"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService5"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot5">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity6"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot6"
+            android:taskAffinity="${applicationId}.slot6"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService6"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot6">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity7"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot7"
+            android:taskAffinity="${applicationId}.slot7"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService7"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot7">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity8"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot8"
+            android:taskAffinity="${applicationId}.slot8"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService8"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot8">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity9"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot9"
+            android:taskAffinity="${applicationId}.slot9"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService9"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot9">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity10"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot10"
+            android:taskAffinity="${applicationId}.slot10"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService10"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot10">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity11"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot11"
+            android:taskAffinity="${applicationId}.slot11"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService11"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot11">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity12"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot12"
+            android:taskAffinity="${applicationId}.slot12"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService12"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot12">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity13"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot13"
+            android:taskAffinity="${applicationId}.slot13"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService13"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot13">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity14"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot14"
+            android:taskAffinity="${applicationId}.slot14"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService14"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot14">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity15"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot15"
+            android:taskAffinity="${applicationId}.slot15"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService15"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot15">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity16"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot16"
+            android:taskAffinity="${applicationId}.slot16"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService16"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot16">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity17"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot17"
+            android:taskAffinity="${applicationId}.slot17"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService17"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot17">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity18"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot18"
+            android:taskAffinity="${applicationId}.slot18"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService18"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot18">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity19"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot19"
+            android:taskAffinity="${applicationId}.slot19"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService19"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot19">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <activity
+            android:name="com.example.j2meslots.slot.SlotActivity20"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard|navigation|screenLayout|smallestScreenSize|uiMode|density"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:process=":slot20"
+            android:taskAffinity="${applicationId}.slot20"
+            android:theme="@style/AppTheme.Slot" />
+        <service
+            android:name="com.example.j2meslots.slot.SlotKeepService20"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:process=":slot20">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="@string/fgs_special_use_subtype" />
+        </service>
+        <!-- END GENERATED-SLOTS -->
+
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
             android:enabled="false"

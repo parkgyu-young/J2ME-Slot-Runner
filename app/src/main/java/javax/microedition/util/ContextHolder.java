@@ -41,6 +41,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import com.example.j2meslots.SlotRuntime;
+
 import javax.microedition.lcdui.keyboard.VirtualKeyboard;
 import javax.microedition.shell.AppClassLoader;
 import javax.microedition.shell.MicroActivity;
@@ -133,7 +135,8 @@ public class ContextHolder {
 
 	public static File getCacheDir() {
 		if (BuildConfig.FULL_EMULATOR) {
-			File dir = new File(Config.getEmulatorDir() + "/cache");
+			// J2ME Slot Runner: each slot clears only its own cache
+			File dir = new File(Config.getEmulatorDir() + "/cache" + SlotRuntime.dataSuffix());
 			if (dir.isDirectory() || dir.mkdirs())
 				return dir;
 		}

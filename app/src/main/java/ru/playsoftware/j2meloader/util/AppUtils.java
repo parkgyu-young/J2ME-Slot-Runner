@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
+import ru.playsoftware.j2meloader.EmulatorApplication;
 import ru.playsoftware.j2meloader.applist.AppItem;
 import ru.playsoftware.j2meloader.appsdb.AppRepository;
 import ru.playsoftware.j2meloader.config.Config;
@@ -121,6 +122,8 @@ public class AppUtils {
 		FileUtils.deleteDirectory(appSaveDir);
 		File appConfigsDir = new File(Config.getConfigsDir(), item.getPath());
 		FileUtils.deleteDirectory(appConfigsDir);
+		// J2ME Slot Runner: per-slot saves ("<app>_slotN") and slot assignments
+		com.example.j2meslots.Slots.onAppDeleted(EmulatorApplication.getInstance(), item.getPath());
 	}
 
 	public static void updateDb(AppRepository appRepository, List<AppItem> items) {

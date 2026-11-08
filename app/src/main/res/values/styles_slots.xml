@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Launcher grid (local night mode decides light/dark palette) -->
+    <style name="AppTheme.Grid" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/grid_toolbar</item>
+        <item name="colorPrimaryDark">@color/grid_toolbar</item>
+        <item name="colorAccent">@color/tile_button</item>
+        <item name="android:colorBackground">@color/grid_bg</item>
+        <item name="android:windowBackground">@color/grid_bg</item>
+        <item name="android:statusBarColor">@color/grid_toolbar</item>
+        <item name="android:navigationBarColor">@color/grid_bg</item>
+    </style>
+
+    <!-- Theme of the 20 slot activities (MicroActivity) -->
+    <style name="AppTheme.Slot" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowShowWallpaper">false</item>
+    </style>
+
+    <style name="SlotTileButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/slot_button_text</item>
+    </style>
+
+    <style name="ProxyCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_slot_tile</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <style name="ProxyHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tile_title</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
+
+    <style name="ProxyLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/tile_status</item>
+        <item name="android:layout_marginTop">6dp</item>
+    </style>
+
+    <style name="ProxyEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/tile_title</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:importantForAutofill" tools:targetApi="o">no</item>
+    </style>
+</resources>

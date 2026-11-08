@@ -20,6 +20,8 @@ package javax.microedition.lcdui;
 
 import static android.opengl.GLES20.*;
 
+import com.example.j2meslots.SlotRuntime;
+
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
@@ -136,6 +138,7 @@ public abstract class Canvas extends Displayable {
 
 	private final Object bufferLock = new Object();
 	private final Object surfaceLock = new Object();
+	private volatile boolean hideNotifySuppressed;
 	private final PaintEvent paintEvent = new PaintEvent();
 	private final SoftBar softBar = new SoftBar();
 	private final CanvasWrapper canvasWrapper = new CanvasWrapper(filter);
@@ -308,6 +311,20 @@ public abstract class Canvas extends Displayable {
 		}
 		if (fpsCounter != null) {
 			fpsCounter.increment();
+		}
+	}
+
+	/**
+	 * J2ME Slot Runner: copy of the last rendered virtual-screen frame (for the launcher tile
+	 * preview); works without a surface. May return null before the first frame.
+	 */
+	public Bitmap copyLastFrame() {
+		synchronized (bufferLock) {
+			if (offscreenCopy == null || offscreenCopy.getBitmap() == null) {
+				return null;
+			}
+			return Bitmap.createBitmap(offscreenCopy.getBitmap(), 0, 0,
+					offscreenCopy.getWidth(), offscreenCopy.getHeight());
 		}
 	}
 
@@ -1207,7 +1224,12 @@ public abstract class Canvas extends Displayable {
 				renderer.start();
 			}
 			surface = holder.getSurface();
-			Display.postEvent(CanvasEvent.getInstance(Canvas.this, CanvasEvent.SHOW_NOTIFY));
+			if (hideNotifySuppressed) {
+				// J2ME Slot Runner: the MIDlet never got hideNotify(), do not send showNotify() twice
+				hideNotifySuppressed = false;
+			} else {
+				Display.postEvent(CanvasEvent.getInstance(Canvas.this, CanvasEvent.SHOW_NOTIFY));
+			}
 			repaintInternal();
 			if (showFps) {
 				fpsCounter = new FpsCounter(overlayView);
@@ -1229,7 +1251,12 @@ public abstract class Canvas extends Displayable {
 			synchronized (surfaceLock) {
 				surface = null;
 			}
-			Display.postEvent(CanvasEvent.getInstance(Canvas.this, CanvasEvent.HIDE_NOTIFY));
+			if (SlotRuntime.keepRunning()) {
+				// J2ME Slot Runner: background mode, the game keeps running without a surface
+				hideNotifySuppressed = true;
+			} else {
+				Display.postEvent(CanvasEvent.getInstance(Canvas.this, CanvasEvent.HIDE_NOTIFY));
+			}
 			if (fpsCounter != null) {
 				fpsCounter.stop();
 				overlayView.removeLayer(fpsCounter);
