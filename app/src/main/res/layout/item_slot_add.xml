@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/grid_add"
+    style="@style/Widget.AppCompat.Button.Borderless"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_margin="6dp"
+    android:background="@drawable/bg_slot_add"
+    android:text="@string/slot_add"
+    android:textColor="@color/grid_add_text"
+    android:textSize="16sp" />

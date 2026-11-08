@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- J2ME Slot Runner launcher palette: light (dark palette in values-night) -->
+<resources>
+    <color name="grid_bg">#F2F3F7</color>
+    <color name="grid_toolbar">#2B3A67</color>
+    <color name="grid_toolbar_text">#FFFFFF</color>
+    <color name="tile_bg">#FFFFFF</color>
+    <color name="tile_stroke">#D9DCE6</color>
+    <color name="tile_stroke_running">#2E9E5B</color>
+    <color name="tile_title">#1B1F2A</color>
+    <color name="tile_status">#5B6275</color>
+    <color name="tile_status_running">#1F8A4C</color>
+    <color name="tile_preview_bg">#20232C</color>
+    <color name="tile_preview_text">#A9AFC2</color>
+    <color name="tile_button">#2B3A67</color>
+    <color name="tile_button_disabled">#B5BACB</color>
+    <color name="tile_badge_bg">#CC2B3A67</color>
+    <color name="tile_badge_text">#FFFFFF</color>
+    <color name="grid_add_bg">#E3E6F0</color>
+    <color name="grid_add_text">#2B3A67</color>
+    <color name="warning_text">#B3261E</color>
+</resources>

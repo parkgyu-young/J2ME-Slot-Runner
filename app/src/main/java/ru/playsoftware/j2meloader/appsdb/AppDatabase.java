@@ -29,6 +29,10 @@ public abstract class AppDatabase extends RoomDatabase {
 	public abstract AppItemDao appItemDao();
 
 	static synchronized AppDatabase open(String path) {
-		return Room.databaseBuilder(EmulatorApplication.getInstance(), AppDatabase.class, path).build();
+		// J2ME Slot Runner: the slot grid and the library each open their own instance;
+		// propagate table invalidations so both lists stay in sync.
+		return Room.databaseBuilder(EmulatorApplication.getInstance(), AppDatabase.class, path)
+				.enableMultiInstanceInvalidation()
+				.build();
 	}
 }

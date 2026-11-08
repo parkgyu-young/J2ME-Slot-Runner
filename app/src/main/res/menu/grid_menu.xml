@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/grid_action_library"
+        android:title="📁"
+        app:contentDescription="@string/menu_library"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/grid_action_settings"
+        android:title="⚙"
+        app:contentDescription="@string/menu_settings"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/grid_action_proxy"
+        android:title="@string/menu_proxy"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/grid_action_library_text"
+        android:title="@string/menu_library"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/grid_action_emulator_settings"
+        android:title="@string/menu_emulator_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/grid_action_about"
+        android:title="@string/menu_about"
+        app:showAsAction="never" />
+</menu>
