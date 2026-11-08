@@ -1,0 +1,10 @@
+MIDlet-1: NetRmsTest, , slottest.NetRmsTest
+MIDlet-Jar-Size: 6187
+MIDlet-Jar-URL: NetRmsTest.jar
+MIDlet-Name: NetRmsTest
+MIDlet-Vendor: J2ME Slot Runner
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+Test-URL: http://example.com/
+Test-Socket: example.com:80

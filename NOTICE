@@ -1,0 +1,16 @@
+J2ME Slot Runner
+Copyright 2026 J2ME Slot Runner contributors
+
+This product is a fork of J2ME-Loader
+  https://github.com/nikita36078/J2ME-Loader
+  Copyright 2017-2026 Nikita Shakarun, Yury Kharchenko (woesss), Arman Jussupgaliyev
+  and the J2ME-Loader contributors; based on J2meLoader by Nickolay Savchenko
+  and on MicroEmulator by Bartek Teodorczyk et al.
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+J2ME-Loader itself bundles third-party components (MicroEmulator, FFmpegKit, TinySoundFont,
+Sonivox EAS, M3G, Mascot Capsule implementation, ...) under their own licenses; see
+app/src/main/assets/licenses.html and the headers of the individual source files.
+
+J2ME Slot Runner changes are listed in docs/CHANGES_vs_J2ME-Loader.md.
+This is not an official J2ME-Loader release.
